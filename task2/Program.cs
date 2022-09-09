@@ -25,28 +25,45 @@ void PrintArray(int[,] inArray)
         Console.WriteLine();
     }
 }
-void DoReverse(int[,] array)
+int[,] DoReverse(int[,] array, int rows, int columns)
 {
-    
-     for (int i = 0; i < array.GetLength(0); i++)
+    if (rows != columns)
     {
-        for (int j = 0; j < array.GetLength(1); j++)
-         {
-            if( i == 0 )
-            {
-            int k = array[i,j];
-            array[i,j] = array[array.GetLength(0)-1,j];
-            array[array.GetLength(0)-1,j] = k;
-            }
+        Console.WriteLine("zzz");
+        return array;
+    }
+    int[,] arrayL = new int[rows,columns];
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < columns; j++)
+        {
+            arrayL[j,i] = array[i,j];
         }
     }
-   
+    return arrayL;
 }
+// void DoReverse(int[,] array)
+// {
+    
+//      for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < array.GetLength(1); j++)
+//          {
+            
+//             int k = array[i,j];
+//             array[i,j] = array[j,i];
+//             array[j,i] = k;
+            
+            
+//         }
+//     }
+   
+// }
 //code
 
 
-int[,] array = GetArray(3,3,4,9);
+int[,] array = GetArray(3,3,1,9);
 PrintArray(array);
 Console.WriteLine("");
-DoReverse(array);
+array = DoReverse(array,3,3);
 PrintArray(array);
